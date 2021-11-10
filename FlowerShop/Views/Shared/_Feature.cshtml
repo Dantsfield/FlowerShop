@@ -1,0 +1,19 @@
+﻿@model FlowerShop.Models.FLOWER
+@using System.Globalization;
+
+<div>
+    @{
+        var newPrice = Model.FLOWER_PRICE * .75;
+        string flowerName = Model.FLOWER_NAME;
+        string formattedName = flowerName.Replace("_", " ");
+        TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+        formattedName = textInfo.ToTitleCase(formattedName);
+            <h1>TODAY'S SPECIAL</h1>
+            <h2>@formattedName </h2>
+            <img src="~/Content/Images/@Model.COLOR.COLOR_NAME.ToLower()/@flowerName/thumb.jpg" />
+            <p> Today's Special Price: $@newPrice</p>
+
+    }
+
+
+</div>

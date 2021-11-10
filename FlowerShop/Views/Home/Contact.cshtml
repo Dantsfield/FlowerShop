@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+<div class="container bodyBackground">
+    <aside class="sidebar container imgBlock">
+        <div style="display:inline-block">
+            @Html.Action("Index", "SearchByFlower")
+            <br />
+            @Html.Action("SearchBox", "SearchByFlower")
+        </div>
+    </aside>
+    <div class="row">
+        <h2 style="margin-bottom: 3px;">@ViewBag.Title</h2>
+        <h4 style="font-weight:bold; margin-top: 3px;">Main Store and Distribution Center</h4>
+        <address>
+            Karen's Flower Shop<br />
+            W525 County Road ABC<br />
+            Indianapolis, IN 46278
+        </address>
+
+        <address>
+            <strong>Phone Number:</strong>   (317) 555-1212<br />
+            <strong>Email:</strong> <a href="mailto:hiflyers@flowershop.com">hiflyers@flowershop.com</a>
+        </address>
+    </div>
+</div>

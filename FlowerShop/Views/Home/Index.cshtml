@@ -1,0 +1,60 @@
+﻿<!-- Tell Index to use the model from the database -->
+@using FlowerShop.Models;
+@model IEnumerable<COLOR>
+@{
+
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="container bodyBackground">
+    <aside class="sidebar container imgBlock">
+        <div style="display:inline-block">
+            @Html.Action("SearchBox", "SearchByFlower")
+            <br />
+            @Html.Action("Index", "SearchByFlower")
+            <br />
+            <div class="feature">
+                @Html.Action("Feature", "Home", new { id = 11 })
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <h1>Our Shop</h1>
+
+
+    @foreach (var allColors in Model)
+    {
+        string currentColor = allColors.COLOR_NAME.ToString();
+        <div class="row">
+            <h2>@currentColor</h2>
+
+            @foreach (var flower in allColors.FLOWERs)
+            {
+                string displayFlowerName = flower.FLOWER_NAME.Replace("_", " ").ToUpper();
+                string folderFlowerName = flower.FLOWER_NAME;
+
+                <div class="col-md-4">
+                    <div class="imgBlock">
+                        <a href="~/Content/Images/@flower.COLOR.COLOR_NAME.ToLower()/@folderFlowerName/images/1.jpg">
+                            <img src="~/Content/Images/@flower.COLOR.COLOR_NAME.ToLower()/@folderFlowerName/thumb.jpg" />
+                        </a>
+                        <p class="caption">@displayFlowerName</p>
+                        <ul>
+                            <!-- Create foreach loop for the flower traits, put in <li>s -->
+                            @foreach (CHARACTERISTIC flowerTrait in flower.CHARACTERISTICs)
+                            {
+                                <li>@flowerTrait.CHAR_DESC</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+            }
+        </div>
+    }
+</div>

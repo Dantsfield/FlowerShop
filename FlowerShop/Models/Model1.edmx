@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="asp11Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHARACTERISTIC">
+          <Key>
+            <PropertyRef Name="CHAR_ID" />
+          </Key>
+          <Property Name="CHAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CHAR_DESC" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COLOR">
+          <Key>
+            <PropertyRef Name="COLOR_ID" />
+          </Key>
+          <Property Name="COLOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COLOR_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FLOWER">
+          <Key>
+            <PropertyRef Name="FLOWER_ID" />
+          </Key>
+          <Property Name="FLOWER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWER_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COLOR_ID" Type="int" Nullable="false" />
+          <Property Name="FLOWER_SIZE" Type="varchar" MaxLength="10" />
+          <Property Name="FLOWER_PRICE" Type="int" />
+        </EntityType>
+        <EntityType Name="FLOWER_CHAR">
+          <Key>
+            <PropertyRef Name="FLOWER_ID" />
+            <PropertyRef Name="CHAR_ID" />
+          </Key>
+          <Property Name="FLOWER_ID" Type="int" Nullable="false" />
+          <Property Name="CHAR_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__FLOWER__COLOR_ID__5F492382">
+          <End Role="COLOR" Type="Self.COLOR" Multiplicity="1" />
+          <End Role="FLOWER" Type="Self.FLOWER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLOR">
+              <PropertyRef Name="COLOR_ID" />
+            </Principal>
+            <Dependent Role="FLOWER">
+              <PropertyRef Name="COLOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FLOWER_CH__CHAR___6319B466">
+          <End Role="CHARACTERISTIC" Type="Self.CHARACTERISTIC" Multiplicity="1" />
+          <End Role="FLOWER_CHAR" Type="Self.FLOWER_CHAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHARACTERISTIC">
+              <PropertyRef Name="CHAR_ID" />
+            </Principal>
+            <Dependent Role="FLOWER_CHAR">
+              <PropertyRef Name="CHAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FLOWER_CH__FLOWE__6225902D">
+          <End Role="FLOWER" Type="Self.FLOWER" Multiplicity="1" />
+          <End Role="FLOWER_CHAR" Type="Self.FLOWER_CHAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FLOWER">
+              <PropertyRef Name="FLOWER_ID" />
+            </Principal>
+            <Dependent Role="FLOWER_CHAR">
+              <PropertyRef Name="FLOWER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="asp11ModelStoreContainer">
+          <EntitySet Name="CHARACTERISTIC" EntityType="Self.CHARACTERISTIC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COLOR" EntityType="Self.COLOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FLOWER" EntityType="Self.FLOWER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FLOWER_CHAR" EntityType="Self.FLOWER_CHAR" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FLOWER__COLOR_ID__5F492382" Association="Self.FK__FLOWER__COLOR_ID__5F492382">
+            <End Role="COLOR" EntitySet="COLOR" />
+            <End Role="FLOWER" EntitySet="FLOWER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FLOWER_CH__CHAR___6319B466" Association="Self.FK__FLOWER_CH__CHAR___6319B466">
+            <End Role="CHARACTERISTIC" EntitySet="CHARACTERISTIC" />
+            <End Role="FLOWER_CHAR" EntitySet="FLOWER_CHAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FLOWER_CH__FLOWE__6225902D" Association="Self.FK__FLOWER_CH__FLOWE__6225902D">
+            <End Role="FLOWER" EntitySet="FLOWER" />
+            <End Role="FLOWER_CHAR" EntitySet="FLOWER_CHAR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="asp11Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="asp11Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHARACTERISTICs" EntityType="asp11Model.CHARACTERISTIC" />
+          <EntitySet Name="COLORs" EntityType="asp11Model.COLOR" />
+          <EntitySet Name="FLOWERs" EntityType="asp11Model.FLOWER" />
+          <AssociationSet Name="FK__FLOWER__COLOR_ID__5F492382" Association="asp11Model.FK__FLOWER__COLOR_ID__5F492382">
+            <End Role="COLOR" EntitySet="COLORs" />
+            <End Role="FLOWER" EntitySet="FLOWERs" />
+          </AssociationSet>
+          <AssociationSet Name="FLOWER_CHAR" Association="asp11Model.FLOWER_CHAR">
+            <End Role="CHARACTERISTIC" EntitySet="CHARACTERISTICs" />
+            <End Role="FLOWER" EntitySet="FLOWERs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CHARACTERISTIC">
+          <Key>
+            <PropertyRef Name="CHAR_ID" />
+          </Key>
+          <Property Name="CHAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CHAR_DESC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FLOWERs" Relationship="asp11Model.FLOWER_CHAR" FromRole="CHARACTERISTIC" ToRole="FLOWER" />
+        </EntityType>
+        <EntityType Name="COLOR">
+          <Key>
+            <PropertyRef Name="COLOR_ID" />
+          </Key>
+          <Property Name="COLOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COLOR_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FLOWERs" Relationship="asp11Model.FK__FLOWER__COLOR_ID__5F492382" FromRole="COLOR" ToRole="FLOWER" />
+        </EntityType>
+        <EntityType Name="FLOWER">
+          <Key>
+            <PropertyRef Name="FLOWER_ID" />
+          </Key>
+          <Property Name="FLOWER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWER_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COLOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="FLOWER_SIZE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FLOWER_PRICE" Type="Int32" />
+          <NavigationProperty Name="COLOR" Relationship="asp11Model.FK__FLOWER__COLOR_ID__5F492382" FromRole="FLOWER" ToRole="COLOR" />
+          <NavigationProperty Name="CHARACTERISTICs" Relationship="asp11Model.FLOWER_CHAR" FromRole="FLOWER" ToRole="CHARACTERISTIC" />
+        </EntityType>
+        <Association Name="FK__FLOWER__COLOR_ID__5F492382">
+          <End Type="asp11Model.COLOR" Role="COLOR" Multiplicity="1" />
+          <End Type="asp11Model.FLOWER" Role="FLOWER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLOR">
+              <PropertyRef Name="COLOR_ID" />
+            </Principal>
+            <Dependent Role="FLOWER">
+              <PropertyRef Name="COLOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FLOWER_CHAR">
+          <End Type="asp11Model.CHARACTERISTIC" Role="CHARACTERISTIC" Multiplicity="*" />
+          <End Type="asp11Model.FLOWER" Role="FLOWER" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="asp11ModelStoreContainer" CdmEntityContainer="asp11Entities">
+          <EntitySetMapping Name="CHARACTERISTICs">
+            <EntityTypeMapping TypeName="asp11Model.CHARACTERISTIC">
+              <MappingFragment StoreEntitySet="CHARACTERISTIC">
+                <ScalarProperty Name="CHAR_DESC" ColumnName="CHAR_DESC" />
+                <ScalarProperty Name="CHAR_ID" ColumnName="CHAR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COLORs">
+            <EntityTypeMapping TypeName="asp11Model.COLOR">
+              <MappingFragment StoreEntitySet="COLOR">
+                <ScalarProperty Name="COLOR_NAME" ColumnName="COLOR_NAME" />
+                <ScalarProperty Name="COLOR_ID" ColumnName="COLOR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FLOWERs">
+            <EntityTypeMapping TypeName="asp11Model.FLOWER">
+              <MappingFragment StoreEntitySet="FLOWER">
+                <ScalarProperty Name="FLOWER_PRICE" ColumnName="FLOWER_PRICE" />
+                <ScalarProperty Name="FLOWER_SIZE" ColumnName="FLOWER_SIZE" />
+                <ScalarProperty Name="COLOR_ID" ColumnName="COLOR_ID" />
+                <ScalarProperty Name="FLOWER_NAME" ColumnName="FLOWER_NAME" />
+                <ScalarProperty Name="FLOWER_ID" ColumnName="FLOWER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FLOWER_CHAR" TypeName="asp11Model.FLOWER_CHAR" StoreEntitySet="FLOWER_CHAR">
+            <EndProperty Name="FLOWER">
+              <ScalarProperty Name="FLOWER_ID" ColumnName="FLOWER_ID" />
+            </EndProperty>
+            <EndProperty Name="CHARACTERISTIC">
+              <ScalarProperty Name="CHAR_ID" ColumnName="CHAR_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

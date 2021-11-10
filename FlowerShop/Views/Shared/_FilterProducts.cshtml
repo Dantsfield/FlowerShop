@@ -1,0 +1,59 @@
+﻿@using FlowerShop.Models;
+@model SearchMyFlower
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+
+    var flowerSizes = new List<SelectListItem>
+{
+
+        new SelectListItem{ Text = "Please Select a Size", Value = ""},
+        new SelectListItem{ Text = "Small", Value = "SMALL"},
+        new SelectListItem{ Text = "Medium", Value = "MEDIUM"},
+        new SelectListItem{ Text = "Large", Value = "LARGE"}
+
+    };
+
+    var fromPrices = new List<SelectListItem>
+{
+        new SelectListItem{ Text = "From", Value = "0"},
+        new SelectListItem{ Text = "25", Value = "25"},
+        new SelectListItem{ Text = "50", Value = "50"},
+        new SelectListItem{ Text = "75", Value = "75"},
+        new SelectListItem{ Text = "100", Value = "100"},
+        new SelectListItem{ Text = "150", Value = "150"},
+        new SelectListItem{ Text = "200", Value = "200"}
+    };
+
+    var toPrices = new List<SelectListItem>
+{
+        new SelectListItem{ Text = "To", Value = "0"},
+        new SelectListItem{ Text = "25", Value = "25"},
+        new SelectListItem{ Text = "50", Value = "50"},
+        new SelectListItem{ Text = "75", Value = "75"},
+        new SelectListItem{ Text = "100", Value = "100"},
+        new SelectListItem{ Text = "150", Value = "150"},
+        new SelectListItem{ Text = "200", Value = "200"}
+    };
+
+
+<p style="font-weight:bold">
+    Filter Products
+</p>
+<p>
+    Color
+    @Html.DropDownListFor(f => f.FlowerSelected, Model.AllFlowerOptions, "Please Select a Color")
+</p>
+
+<p>
+    Size&nbsp;&nbsp;
+    @Html.DropDownList("flowerSize", new SelectList(flowerSizes, "Value", "Text"))
+</p>
+<p>
+    Price
+    @Html.DropDownList("fromPrice", new SelectList(fromPrices, "Value", "Text"))
+    @Html.DropDownList("toPrice", new SelectList(toPrices, "Value", "Text"))
+</p>
+@Html.ValidationSummary(true)
+<input style="float:right" type="submit" id="search" value="Filter" />
+
+}

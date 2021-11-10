@@ -1,0 +1,116 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: rgb(221,220,76);
+    background: linear-gradient(0deg, rgba(221,220,76,1) 4%, rgba(232,120,34,1) 39%);
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    min-height: 100%
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Site Banner Style*/
+.bannerStyle {
+}
+
+/* Get Nav Bar set up*/
+.navbar-collapse {
+    background-color: orange;
+    padding-left: 0;
+}
+
+.navbar-nav {
+    float: right;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+.row {
+    float: left;
+    width: 70%;
+    margin-left: 0;
+    margin-right: 0;
+    color: darkred;
+}
+
+    .row h1 {
+        font-weight: bold;
+    }
+
+    .row h2 {
+        border-bottom-style: solid
+    }
+
+    .row h3 {
+        font-weight: bold;
+        margin-bottom: 2px;
+    }
+
+
+.sidebar {
+    margin-top: 1%;
+    float: right;
+    width: 30%;
+    color: darkred;
+}
+
+.bodyBackground {
+    background-color: gold;
+    width: 100%;
+}
+
+img {
+    margin: auto;
+    display: block;
+}
+
+.imgBlock {
+    background-color: springgreen;
+    border-top-color: orangered;
+    border-top-style: solid;
+    border-width: 5px;
+    margin-bottom: 6%;
+}
+
+    .imgBlock p {
+        margin-bottom: auto;
+        font-weight: bold;
+        margin-left: 5%
+    }
+
+input[type="text"] {
+    width:78%;
+}
+.feature {
+    background-color:white;
+    text-align:center;
+    border-style:solid;
+    margin-top:10px;
+    margin-bottom:15px;
+}

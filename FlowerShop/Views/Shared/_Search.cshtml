@@ -1,0 +1,17 @@
+﻿@using FlowerShop.Models;
+@model SearchMyFlower
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    // Create a search field by using a textbox
+    // Sumbit type adds the values to the query string
+
+    <p style="font-weight:bold">
+        Search Flower Names
+    </p>
+    <p>
+        Search
+        @Html.TextBox("searchFlowerTextbox")<br />
+        @Html.ValidationSummary(true)
+    </p>
+    <input style="float:right" name="searchButton" type="submit" id="search" value="Search" />
+}

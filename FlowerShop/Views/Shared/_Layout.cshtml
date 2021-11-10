@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container body-content">
+        <div class="container">
+            <img src="~/Content/Images/flowershop_header.png" alt="HiFlyers' Flower Online Shop" style="width:100%" />
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                    <li>@Html.ActionLink("Legal", "Legal", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Register", "Register", "Home")</li>
+                </ul>
+            </div>
+            @RenderBody()
+
+        </div>
+
+        <hr />
+        <footer>
+            <div style="float:right; color:darkred">@Html.ActionLink("Managment Page", "Management", "Home")</div>
+            <p style="text-align:center; color:darkred">&copy; @DateTime.Now.Year - Plant Photos and Information by: MissouriPlants.com</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

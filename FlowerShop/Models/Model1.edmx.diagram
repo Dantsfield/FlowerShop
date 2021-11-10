@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08b1d369f4104e43a3ad14668ad8c7c5" Name="Diagram1">
+        <EntityTypeShape EntityType="asp11Model.CHARACTERISTIC" Width="1.5" PointX="3.5" PointY="4.875" />
+        <EntityTypeShape EntityType="asp11Model.COLOR" Width="1.5" PointX="3.5" PointY="0.875" />
+        <EntityTypeShape EntityType="asp11Model.FLOWER" Width="1.5" PointX="5.75" PointY="0.5" />
+        <AssociationConnector Association="asp11Model.FK__FLOWER__COLOR_ID__5F492382" />
+        <AssociationConnector Association="asp11Model.FLOWER_CHAR" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
